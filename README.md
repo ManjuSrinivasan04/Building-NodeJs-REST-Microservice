@@ -1,1 +1,1 @@
-# node-ms-part-two
+Reference code for the blog: [https://www.coveros.com/node-js-microservice-part-two/]
