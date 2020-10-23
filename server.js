@@ -1,10 +1,9 @@
 require('dotenv').config();
 
-const Koa = require('koa');
-const routes = require('./lib/routes');
+const express = require('express');
 const connectToDb = require('./lib/connect-to-db');
 
-const app = new Koa();
+const app = express();
 
 connectToDb( {
   host: process.env.DB_HOST,
@@ -14,8 +13,12 @@ connectToDb( {
 
 const PORT = process.env.PORT || 8080;
 
+app.get('/',(req,res)=>{
+  res.send("And now you are in Home Page");
+});
 // Load the routes
-app.use(routes());
+const routes = require('./lib/routes');
+routes(app);
 
 // Start the server
 const server = app.listen(PORT, () => {
